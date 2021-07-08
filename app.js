@@ -31,8 +31,7 @@ if (!options.event_type || !options.start_date || !options.end_date) {
       console.log('----', day['date'], '----');
       day['spots']
         .flatMap((x) => x['start_time'])
-        .map((x) => dayjs(x).format('HH:mm'))
-        .map((x) => console.log(x));
+        .map((x) => console.log(dayjs(x).format('HH:mm')));
     }
   } catch (error) {
     console.log(error.response.body);
