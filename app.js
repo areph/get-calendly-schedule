@@ -2,6 +2,7 @@
 
 const program = require('commander');
 const superagent = require('superagent');
+const dayjs = require('dayjs');
 
 program
   .version('0.0.1')
@@ -25,11 +26,14 @@ if (!options.event_type || !options.start_date || !options.end_date) {
       range_end: options.end_date,
     };
     const response = await superagent.get(url).query(query);
-    console.log(
-      JSON.parse(response.text)['days'][0]['spots'].flatMap(
-        (x) => x['start_time']
-      )
-    );
+    const days = JSON.parse(response.text)['days'];
+    for (const day of days) {
+      console.log('----', day['date'], '----');
+      day['spots']
+        .flatMap((x) => x['start_time'])
+        .map((x) => dayjs(x).format('HH:mm'))
+        .map((x) => console.log(x));
+    }
   } catch (error) {
     console.log(error.response.body);
   }
