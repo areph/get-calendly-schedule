@@ -8,7 +8,9 @@
     "start": "node app.js",
     "prepare": "husky install"
   },
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^8.0.0"
+  },
   "devDependencies": {
     "eslint": "^7.30.0",
     "eslint-plugin-node": "^11.1.0",
