@@ -1,3 +1,6 @@
 'use strict';
 
-console.log('hello!');
+const commander = require('commander');
+
+commander.parse(process.argv);
+console.log(commander.args[0]);
