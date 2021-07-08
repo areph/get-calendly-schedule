@@ -1,0 +1,31 @@
+{
+  "name": "docker_web_app_for_express",
+  "version": "1.0.0",
+  "description": "Node.js and Express on Docker",
+  "author": "areph <40balmung@gmail.com>",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "prepare": "husky install"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-plugin-node": "^11.1.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{js,css,md}": "prettier --write"
+  }
+}
