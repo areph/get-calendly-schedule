@@ -9,7 +9,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "commander": "^8.0.0"
+    "commander": "^8.0.0",
+    "superagent": "^6.1.0"
   },
   "devDependencies": {
     "eslint": "^7.30.0",
