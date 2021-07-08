@@ -1,0 +1,9 @@
+version: '3.9' # optional since v1.27.0
+services:
+  web:
+    environment:
+      APP_PATH: /usr/src/app
+    build: .
+    volumes:
+      - .:/usr/src/app
+    command: npm run start
