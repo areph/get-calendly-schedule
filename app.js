@@ -16,6 +16,7 @@ if (!options.event_type || !options.start_date || !options.end_date) {
   return;
 }
 
+const DAY_OF_WEEK = ['日', '月', '火', '水', '木', '金', '土'];
 (async () => {
   try {
     const url = `https://calendly.com/api/booking/event_types/${options.event_type}/calendar/range`;
@@ -28,7 +29,11 @@ if (!options.event_type || !options.start_date || !options.end_date) {
     const response = await superagent.get(url).query(query);
     const days = JSON.parse(response.text)['days'];
     for (const day of days) {
-      console.log('----', day['date'], '----');
+      console.log(
+        '----',
+        `${day['date']}(${DAY_OF_WEEK[dayjs(day['date']).day()]})`,
+        '----'
+      );
       day['spots']
         .flatMap((x) => x['start_time'])
         .map((x) => console.log(dayjs(x).format('HH:mm')));
